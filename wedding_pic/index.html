@@ -414,8 +414,8 @@
 </head>
 <body>
 
-    <!-- Hidden Background Audio Player: Updated to a beautiful Wedding Classical track -->
-    <audio id="bg-music" loop>
+    <!-- Updated with autoplay and playsinline attributes -->
+    <audio id="bg-music" loop autoplay playsinline>
         <source src="canon.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -719,39 +719,57 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
         const playIcon = document.getElementById("play-icon");
         const pauseIcon = document.getElementById("pause-icon");
 
-        function toggleMusic() {
-            if (music.paused) {
-                music.play().then(() => {
-                    playIcon.style.display = "none";
-                    pauseIcon.style.display = "block";
-                    musicBtn.style.animation = "none"; 
-                }).catch(error => {
-                    console.log("Playback engine waiting for interaction context:", error);
-                });
+        function updateUI(isPlaying) {
+            if (isPlaying) {
+                playIcon.style.display = "none";
+                pauseIcon.style.display = "block";
+                musicBtn.style.animation = "none"; 
             } else {
-                music.pause();
                 playIcon.style.display = "block";
                 pauseIcon.style.display = "none";
             }
         }
 
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => updateUI(true)).catch(e => console.log(e));
+            } else {
+                music.pause();
+                updateUI(false);
+            }
+        }
+
         musicBtn.addEventListener("click", toggleMusic);
 
-        // First Interaction Autoplay fallback wrapper
+        // Try immediate autoplay on page load
+        window.addEventListener("DOMContentLoaded", () => {
+            music.play().then(() => {
+                updateUI(true);
+            }).catch(error => {
+                console.log("Autoplay blocked by browser. Setting fallback listeners.");
+            });
+        });
+
+        // Robust fallback: Trigger playback on any basic user context action
         function triggerAutoplay() {
             if (music.paused) {
                 music.play().then(() => {
-                    playIcon.style.display = "none";
-                    pauseIcon.style.display = "block";
-                    musicBtn.style.animation = "none";
-                });
+                    updateUI(true);
+                }).catch(e => console.log(e));
             }
+            // Clear listeners once playback successfully begins
+            removeFallbackListeners();
+        }
+
+        function removeFallbackListeners() {
             document.removeEventListener('click', triggerAutoplay);
             document.removeEventListener('touchstart', triggerAutoplay);
+            document.removeEventListener('scroll', triggerAutoplay);
         }
 
         document.addEventListener('click', triggerAutoplay);
         document.addEventListener('touchstart', triggerAutoplay);
+        document.addEventListener('scroll', triggerAutoplay);
     </script>
 </body>
 </html>
