@@ -671,6 +671,7 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
     </footer>
 
     <script>
+    
         // Set your wedding date here (YYYY-MM-DD HH:MM:SS)
         const weddingDate = new Date("October 16, 2026 15:30:00").getTime();
 
@@ -719,57 +720,69 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
         const playIcon = document.getElementById("play-icon");
         const pauseIcon = document.getElementById("pause-icon");
 
+        // Updates the play/pause button visual state
         function updateUI(isPlaying) {
             if (isPlaying) {
                 playIcon.style.display = "none";
                 pauseIcon.style.display = "block";
-                musicBtn.style.animation = "none"; 
+                musicBtn.style.animation = "none"; // Stop pulsing when playing
             } else {
                 playIcon.style.display = "block";
                 pauseIcon.style.display = "none";
+                musicBtn.style.animation = "pulse 2s infinite"; // Pulse when paused to invite interaction
             }
         }
 
+        // Manual play/pause toggle functionality
         function toggleMusic() {
             if (music.paused) {
-                music.play().then(() => updateUI(true)).catch(e => console.log(e));
+                music.play().then(() => updateUI(true)).catch(e => console.log("Playback failed:", e));
             } else {
                 music.pause();
                 updateUI(false);
             }
         }
 
-        musicBtn.addEventListener("click", toggleMusic);
+        // Handle direct button clicks manually
+        musicBtn.addEventListener("click", (event) => {
+            event.stopPropagation(); // Prevents the event from bubbling up to global layout listeners
+            toggleMusic();
+        });
 
-        // Try immediate autoplay on page load
+        // Attempt silent autoplay on load (works on rare browser configurations)
         window.addEventListener("DOMContentLoaded", () => {
             music.play().then(() => {
                 updateUI(true);
             }).catch(error => {
-                console.log("Autoplay blocked by browser. Setting fallback listeners.");
+                console.log("Autoplay restricted. Awaiting screen touch/interaction.");
             });
         });
 
-        // Robust fallback: Trigger playback on any basic user context action
-        function triggerAutoplay() {
+        // Explicit engine to fire playback on the very first touch or click context
+        function handleAutoplayInteraction() {
             if (music.paused) {
                 music.play().then(() => {
                     updateUI(true);
-                }).catch(e => console.log(e));
+                    removeAutoplayListeners(); // Clean up listeners only when successful
+                }).catch(err => {
+                    console.log("Browser still restricting audio context...", err);
+                });
+            } else {
+                removeAutoplayListeners();
             }
-            // Clear listeners once playback successfully begins
-            removeFallbackListeners();
         }
 
-        function removeFallbackListeners() {
-            document.removeEventListener('click', triggerAutoplay);
-            document.removeEventListener('touchstart', triggerAutoplay);
-            document.removeEventListener('scroll', triggerAutoplay);
+        function removeAutoplayListeners() {
+            document.removeEventListener('touchstart', handleAutoplayInteraction);
+            document.removeEventListener('click', handleAutoplayInteraction);
+            document.removeEventListener('scroll', handleAutoplayInteraction);
         }
 
-        document.addEventListener('click', triggerAutoplay);
-        document.addEventListener('touchstart', triggerAutoplay);
-        document.addEventListener('scroll', triggerAutoplay);
+        // Global listeners to instantly capture user screen activation
+        document.addEventListener('touchstart', handleAutoplayInteraction, { passive: true });
+        document.addEventListener('click', handleAutoplayInteraction);
+        document.addEventListener('scroll', handleAutoplayInteraction, { passive: true });
+ 
     </script>
 </body>
 </html>
