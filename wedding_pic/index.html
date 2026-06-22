@@ -44,6 +44,12 @@
             }
         }
 
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(13, 59, 102, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(13, 59, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(13, 59, 102, 0); }
+        }
+
         /* Class to trigger animations via JavaScript Scroll Observer */
         .reveal {
             opacity: 0;
@@ -129,17 +135,18 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            aspect-ratio: 3 / 2;
+            aspect-ratio: 3 / 2; /* Maintains a consistent aspect ratio layout */
         }
 
         .gallery-frame img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Keeps images beautifully cropped inside frames */
             border-radius: 4px;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Image hover effect */
         .gallery-frame:hover img {
             transform: scale(1.05);
         }
@@ -314,6 +321,7 @@
             color: #7f8c8d;
         }
 
+        /* Hex values chosen for your theme colors */
         .color-silver { background-color: #C0C0C0; }
         .color-gray { background-color: #808080; }
         .color-dusty-blue { background-color: #7A93AC; }
@@ -363,6 +371,38 @@
             font-weight: 400;
         }
 
+        /* Floating Music Player Controls */
+        .music-control {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background-color: var(--navy-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(13, 59, 102, 0.3);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .music-control:hover {
+            transform: scale(1.05);
+            background-color: #124a7e;
+        }
+
+        .music-control svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
         footer {
             padding: 40px 20px;
             background-color: var(--navy-color);
@@ -374,11 +414,21 @@
 </head>
 <body>
 
-    <!-- Hidden Background Audio Player -->
+    <!-- Hidden Background Audio Player: Updated to a beautiful Wedding Classical track -->
     <audio id="bg-music" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <!-- Floating Audio UI Button Toggle -->
+    <button id="music-btn" class="music-control" aria-label="Toggle background music">
+        <svg id="play-icon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </button>
 
     <header class="hero">
         <p>The Wedding Invitation of</p>
@@ -412,6 +462,7 @@
         </div>
     </section>
 
+    <!-- Photo Gallery Section -->
     <section id="gallery" class="reveal">
         <h2>Our Moments</h2>
         <div class="divider"></div>
@@ -479,27 +530,35 @@
         <div class="divider"></div>
         
         <div class="details-grid">
+            <!-- Left Side: Bridal Party -->
             <div class="card">
                 <h3>Bridal Party</h3>
+                
                 <p class="entourage-role">Maid of Honor</p>
                 <p class="entourage-name">Sarah Jenkins</p>
+                
                 <p class="entourage-role">Bridesmaids</p>
                 <p class="entourage-name">Melissa Cruz</p>
                 <p class="entourage-name">Jessica Santos</p>
                 <p class="entourage-name">Chloe Villanueva</p>
+                
                 <p class="entourage-role">Flower Girls</p>
                 <p class="entourage-name">Lily Albright</p>
                 <p class="entourage-name">Mia Mendoza</p>
             </div>
 
+            <!-- Right Side: Groomsmen Party -->
             <div class="card">
                 <h3>Groomsmen Party</h3>
+                
                 <p class="entourage-role">Best Man</p>
                 <p class="entourage-name">Michael Vance</p>
+                
                 <p class="entourage-role">Groomsmen</p>
                 <p class="entourage-name">David Reyes</p>
                 <p class="entourage-name">Justin Taylor</p>
                 <p class="entourage-name">Harvey Go</p>
+                
                 <p class="entourage-role">Ring Bearer</p>
                 <p class="entourage-name">Ethan Ramirez</p>
             </div>
@@ -510,22 +569,24 @@
         <h2>Dress Code</h2>
         <div class="divider"></div>
         <div class="card">
+            
             <p style="font-weight: 600; margin-top: 15px; letter-spacing: 1px; color: var(--primary-color);">WHAT TO WEAR</p>
             <p style="margin-bottom: 20px; font-size: 0.95rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                 Please dress nicely and help us make beautiful memories.<br>
                 <strong style="color: #c0392b;">Kindly refrain from wearing all-white attire.</strong>
             </p>
 
+            <!-- Attire Preview Grid Row -->
             <div class="attire-preview-row">
                 <div class="attire-card">
                     <div class="attire-img-wrapper">
-                        <img src="ladies.png" alt="Ladies Inspiration">
+                        <img src="ladies.png" >
                     </div>
                     <span class="attire-label">Ladies Inspiration</span>
                 </div>
                 <div class="attire-card">
                     <div class="attire-img-wrapper">
-                        <img src="gentlemen.png" alt="Gentlemen Inspiration">
+                        <img src="gentlemen.png" alt="Gentlemen Classic Gray Suit Inspiration">
                     </div>
                     <span class="attire-label">Gentlemen Inspiration</span>
                 </div>
@@ -544,6 +605,7 @@
             </p>
 
             <div class="divider" style="background-color: #e0e0e0; width: 80%; margin: 25px auto;"></div>
+            
             <p style="font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; color: var(--navy-color);">Our Color Palette</p>
             
             <div class="palette-container">
@@ -584,15 +646,15 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
         </div>
     </section>
 
-    <section id="moments-2" class="reveal">
+    <section id="gallery" class="reveal">
         <h2>Our Moments</h2>
         <div class="divider"></div>
         <div class="gallery-container">
             <div class="gallery-frame">
-                <img src="pic3.jpg" alt="Lorna and Danny - Moment 3">
+                <img src="pic3.jpg" alt="Lorna and Danny - Moment 1">
             </div>
             <div class="gallery-frame">
-                <img src="pic4.jpg" alt="Lorna and Danny - Moment 4">
+                <img src="pic4.jpg" alt="Lorna and Danny - Moment 2">
             </div>
         </div>
     </section>
@@ -609,7 +671,7 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
     </footer>
 
     <script>
-        // Set wedding date
+        // Set your wedding date here (YYYY-MM-DD HH:MM:SS)
         const weddingDate = new Date("October 16, 2026 15:30:00").getTime();
 
         const timer = setInterval(function() {
@@ -635,7 +697,7 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
             }
         }, 1000);
 
-        // Scroll Animations
+        // JavaScript Intersection Observer for Scroll Animations
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -643,19 +705,46 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
                     entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.15 });
+        }, {
+            threshold: 0.15 
+        });
 
-        revealElements.forEach(element => { observer.observe(element); });
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
 
-        // --- INVISIBLE AUTO-PLAY ENGINE ---
+        // --- ENHANCED AUTOPLAY MUSIC ENGINE ---
         const music = document.getElementById("bg-music");
+        const musicBtn = document.getElementById("music-btn");
+        const playIcon = document.getElementById("play-icon");
+        const pauseIcon = document.getElementById("pause-icon");
 
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    playIcon.style.display = "none";
+                    pauseIcon.style.display = "block";
+                    musicBtn.style.animation = "none"; 
+                }).catch(error => console.log("Playback context deferred: ", error));
+            } else {
+                music.pause();
+                playIcon.style.display = "block";
+                pauseIcon.style.display = "none";
+            }
+        }
+
+        musicBtn.addEventListener("click", toggleMusic);
+
+        // Global Event Triggers: Bypasses browser blocking on the very first human action
         function triggerSeamlessAutoplay() {
             if (music.paused) {
-                music.play()
-                .then(() => { console.log("Music started seamlessly via user engagement tracking."); })
-                .catch(err => console.log("Autoplay context initialization delayed: ", err));
+                music.play().then(() => {
+                    playIcon.style.display = "none";
+                    pauseIcon.style.display = "block";
+                    musicBtn.style.animation = "none"; // Stop pulse once playing
+                }).catch(err => console.log("Autoplay blocked by browser policy: ", err));
             }
+            // Disarm listeners immediately once activated to prevent performance lag
             removeAutoplayListeners();
         }
 
@@ -665,7 +754,7 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
             document.removeEventListener('scroll', triggerSeamlessAutoplay);
         }
 
-        // Monitors background system event triggers for user presence
+        // Listens for clicks, taps, or scrolls anywhere on the page
         document.addEventListener('click', triggerSeamlessAutoplay);
         document.addEventListener('touchstart', triggerSeamlessAutoplay);
         document.addEventListener('scroll', triggerSeamlessAutoplay);
