@@ -373,6 +373,7 @@
 
         /* Floating Music Player Controls */
         .music-control {
+            display: none !important;
             position: fixed;
             bottom: 25px;
             right: 25px;
@@ -713,74 +714,50 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
         });
 
         // --- BACKGROUND MUSIC ENGINE ---
+      // --- BACKGROUND MUSIC ENGINE ---
         const music = document.getElementById("bg-music");
-        const musicBtn = document.getElementById("music-btn");
-        const playIcon = document.getElementById("play-icon");
-        const pauseIcon = document.getElementById("pause-icon");
-
-        // Updates the play/pause button visual state
-        function updateUI(isPlaying) {
-            if (isPlaying) {
-                playIcon.style.display = "none";
-                pauseIcon.style.display = "block";
-                musicBtn.style.animation = "none"; // Stop pulsing when playing
-            } else {
-                playIcon.style.display = "block";
-                pauseIcon.style.display = "none";
-                musicBtn.style.animation = "pulse 2s infinite"; // Pulse when paused
-            }
-        }
-
-        // Manual play/pause button functionality
-        function toggleMusic() {
-            if (music.paused) {
-                music.play().then(() => updateUI(true)).catch(e => console.log("Playback failed:", e));
-            } else {
-                music.pause();
-                updateUI(false);
-            }
-        }
-
-        // Handle floating button clicks explicitly
-        musicBtn.addEventListener("click", (event) => {
-            event.stopPropagation(); // Stops the click event from triggering the global page interaction handlers
-            toggleMusic();
-        });
 
         // Attempt instant native autoplay on page load 
         window.addEventListener("DOMContentLoaded", () => {
-            music.play().then(() => {
-                updateUI(true);
-            }).catch(error => {
-                console.log("Autoplay restricted by browser settings. Awaiting user scroll or interaction.");
+            music.play().catch(error => {
+                console.log("Autoplay restricted by browser settings. Awaiting user scroll down.");
             });
         });
 
-        // The Engine that handles the Autoplay Activation on Scroll, Touch, or Click
-        function handleAutoplayInteraction() {
+        // Trigger music specifically when the user scrolls DOWN past a 20px threshold
+        function handleScrollAutoplay() {
+            if (window.scrollY > 20) { 
+                if (music.paused) {
+                    music.play().then(() => {
+                        removeAutoplayListeners(); // Clean up completely once playing
+                    }).catch(err => {
+                        console.log("Browser audio context restriction still active...", err);
+                    });
+                } else {
+                    removeAutoplayListeners();
+                }
+            }
+        }
+
+        // Standard fallback interaction (if they click before scrolling)
+        function handleControlInteraction() {
             if (music.paused) {
                 music.play().then(() => {
-                    updateUI(true);
-                    removeAutoplayListeners(); // Clean up listeners completely once audio successfully starts
-                }).catch(err => {
-                    console.log("Browser audio context restriction still active...", err);
-                });
-            } else {
-                removeAutoplayListeners();
+                    removeAutoplayListeners();
+                }).catch(err => console.log(err));
             }
         }
 
         function removeAutoplayListeners() {
-            window.removeEventListener('scroll', handleAutoplayInteraction);
-            document.removeEventListener('touchstart', handleAutoplayInteraction);
-            document.removeEventListener('click', handleAutoplayInteraction);
+            window.removeEventListener('scroll', handleScrollAutoplay);
+            document.removeEventListener('touchstart', handleControlInteraction);
+            document.removeEventListener('click', handleControlInteraction);
         }
 
-        // Global Event Listeners to instantly capture user screen activation
-        // window 'scroll' captures early touch-scrolling or trackpad scrolling movements instantly
-        window.addEventListener('scroll', handleAutoplayInteraction, { passive: true });
-        document.addEventListener('touchstart', handleAutoplayInteraction, { passive: true });
-        document.addEventListener('click', handleAutoplayInteraction);
+        // Global Event Listeners
+        window.addEventListener('scroll', handleScrollAutoplay, { passive: true });
+        document.addEventListener('touchstart', handleControlInteraction, { passive: true });
+        document.addEventListener('click', handleControlInteraction);
     </script>
 </body>
 </html>
