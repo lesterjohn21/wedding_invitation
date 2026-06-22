@@ -669,9 +669,7 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
     <footer>
         <p>#LornaAndDannySealedTheDeal</p>
     </footer>
-
-    <script>
-    
+<script>
         // Set your wedding date here (YYYY-MM-DD HH:MM:SS)
         const weddingDate = new Date("October 16, 2026 15:30:00").getTime();
 
@@ -729,11 +727,11 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
             } else {
                 playIcon.style.display = "block";
                 pauseIcon.style.display = "none";
-                musicBtn.style.animation = "pulse 2s infinite"; // Pulse when paused to invite interaction
+                musicBtn.style.animation = "pulse 2s infinite"; // Pulse when paused
             }
         }
 
-        // Manual play/pause toggle functionality
+        // Manual play/pause button functionality
         function toggleMusic() {
             if (music.paused) {
                 music.play().then(() => updateUI(true)).catch(e => console.log("Playback failed:", e));
@@ -743,29 +741,29 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
             }
         }
 
-        // Handle direct button clicks manually
+        // Handle floating button clicks explicitly
         musicBtn.addEventListener("click", (event) => {
-            event.stopPropagation(); // Prevents the event from bubbling up to global layout listeners
+            event.stopPropagation(); // Stops the click event from triggering the global page interaction handlers
             toggleMusic();
         });
 
-        // Attempt silent autoplay on load (works on rare browser configurations)
+        // Attempt instant native autoplay on page load 
         window.addEventListener("DOMContentLoaded", () => {
             music.play().then(() => {
                 updateUI(true);
             }).catch(error => {
-                console.log("Autoplay restricted. Awaiting screen touch/interaction.");
+                console.log("Autoplay restricted by browser settings. Awaiting user scroll or interaction.");
             });
         });
 
-        // Explicit engine to fire playback on the very first touch or click context
+        // The Engine that handles the Autoplay Activation on Scroll, Touch, or Click
         function handleAutoplayInteraction() {
             if (music.paused) {
                 music.play().then(() => {
                     updateUI(true);
-                    removeAutoplayListeners(); // Clean up listeners only when successful
+                    removeAutoplayListeners(); // Clean up listeners completely once audio successfully starts
                 }).catch(err => {
-                    console.log("Browser still restricting audio context...", err);
+                    console.log("Browser audio context restriction still active...", err);
                 });
             } else {
                 removeAutoplayListeners();
@@ -773,16 +771,16 @@ AS THIS DAY REVOLVES AROUND LOVE'S EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REP
         }
 
         function removeAutoplayListeners() {
+            window.removeEventListener('scroll', handleAutoplayInteraction);
             document.removeEventListener('touchstart', handleAutoplayInteraction);
             document.removeEventListener('click', handleAutoplayInteraction);
-            document.removeEventListener('scroll', handleAutoplayInteraction);
         }
 
-        // Global listeners to instantly capture user screen activation
+        // Global Event Listeners to instantly capture user screen activation
+        // window 'scroll' captures early touch-scrolling or trackpad scrolling movements instantly
+        window.addEventListener('scroll', handleAutoplayInteraction, { passive: true });
         document.addEventListener('touchstart', handleAutoplayInteraction, { passive: true });
         document.addEventListener('click', handleAutoplayInteraction);
-        document.addEventListener('scroll', handleAutoplayInteraction, { passive: true });
- 
     </script>
 </body>
 </html>
