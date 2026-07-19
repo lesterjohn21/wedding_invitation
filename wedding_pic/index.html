@@ -198,6 +198,23 @@
             margin-top: 40px;
         }
 
+        /* Enhanced Secondary Sponsors Grid for cleaner center line alignment */
+        .secondary-sponsors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 40px;
+            margin: 15px auto 0 auto;
+            max-width: 540px;
+        }
+        
+        .secondary-sponsors-grid p:nth-child(odd) {
+            text-align: right;
+        }
+        
+        .secondary-sponsors-grid p:nth-child(even) {
+            text-align: left;
+        }
+
         @media (max-width: 768px) {
             .details-grid, .gallery-container, .attire-preview-row {
                 grid-template-columns: 1fr;
@@ -206,6 +223,16 @@
             h2 { font-size: 2.8rem; }
             .registry-container { flex-direction: column; align-items: center; }
             .attire-img-wrapper { height: 320px; }
+        }
+
+        @media (max-width: 500px) {
+            .secondary-sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+            .secondary-sponsors-grid p:nth-child(odd),
+            .secondary-sponsors-grid p:nth-child(even) {
+                text-align: center;
+            }
         }
 
         .card {
@@ -322,10 +349,9 @@
         }
 
         /* Hex values chosen for your theme colors */
+        .color-navy-blue { background-color: #000080; }
+        .color-dusty-blue { background-color: #7393B3; }
         .color-silver { background-color: #C0C0C0; }
-        .color-gray { background-color: #808080; }
-        .color-dusty-blue { background-color: #7A93AC; }
-        .color-sky-blue { background-color: #AED6F1; }
 
         /* Gift Registry & QR Section Styles */
         .registry-container {
@@ -530,27 +556,57 @@
         <h2>The Entourage</h2>
         <div class="divider"></div>
         
+        
+
         <div class="details">
             <div class="card">
-                <h3>Sponsors</h3>
+                <h3>Entourage</h3>
+
+                <p class="entourage-role">Parents of the Groom</p>
+                <h2></h2>
+                <div class="secondary-sponsors-grid">
+                    <p class="entourage-name">✝️</p>
+                    <p class="entourage-name">✝️</p>
+                
+                </div>
+                <h2></h2>
+
+
+                <p class="entourage-role">Parents of the Bride</p>
+                <h2></h2>
+                <div class="secondary-sponsors-grid">
+                    <p class="entourage-name">Mr. Edilberto S. Padin Jr. ✝️</p>
+                    <p class="entourage-name">Mrs. Lourdes B. Padin ✝️</p>
+                
+                </div>
+                <h2></h2>
 
                 <p class="entourage-role">Principal Sponsor</p>
-                <p class="entourage-name">Eduardo Pacifico Padin - Perla Padin</p>
-                <p class="entourage-name">Chan Weng Foo - Doreen Tan</p>
-
+                <h2></h2>
+                <div class="secondary-sponsors-grid">
+                    
+                    <p class="entourage-name">Mr. Eduardo Pacifico Padin</p>
+                    <p class="entourage-name">Mrs. Perla Padin</p>
+                    <p class="entourage-name">Mr. Chan Weng Foo</p>
+                    <p class="entourage-name">Mr. Doreen Tan</p>
+                </div>
+                <h2></h2>
                 <p class="entourage-role">Secondary Sponsor</p>
-                <p class="entourage-name">Lorenzo Clavejo</p>
-                <p class="entourage-name">Rose Clavejo</p>
-                <p class="entourage-name">Dr. Alvin Jorgio</p>
-                <p class="entourage-name">Deduth Jorgio</p>
-                <p class="entourage-name">Consuelo Abadiez</p>
-                <p class="entourage-name">Jesus Abadiez</p>
-                <p class="entourage-name">Teresita Chu</p>
-                <p class="entourage-name">Renato Clavejo</p>
-                <p class="entourage-name">Blucil Clavejo</p>
-                <p class="entourage-name">Joselyn Tabunan</p>
-                <p class="entourage-name">Reynaldo Padin</p>
-
+                <h2></h2>
+                <div class="secondary-sponsors-grid">
+                    <p class="entourage-name">Mr. Lorenzo Clavejo</p>
+                    <p class="entourage-name">Mrs. Rose Clavejo </p>
+                    <p class="entourage-name">Mr. Dr. Alvin Jorgio</p>
+                    <p class="entourage-name">Mrs. Deduth Jorgio </p>
+                    <p class="entourage-name">Mr. Jesus Abadiez </p>  
+                    <p class="entourage-name">Mrs. Consuelo Abadiez</p>
+                    <p class="entourage-name">Mr. Renato Clavejo </p>
+                    <p class="entourage-name">Mrs. Blucil Clavejo</p>                    
+                    <p class="entourage-name">Mr. Reynaldo Padin</p>
+                    <p class="entourage-name">Mrs. Joselyn Tabunan</p>
+                    <p class="entourage-name" style="grid-column: span 2; text-align: center;">Mrs. Teresita Chu</p>
+                    
+                </div>
               
             </div>
 
@@ -561,18 +617,18 @@
                 <h3>Bridal Party</h3>
 
                 <p class="entourage-role">Maid of Honor</p>
-                <p class="entourage-name">Rosemarie Dianne Japlos</p>
-                <p class="entourage-name">Vanessa Chan</p>
+                <p class="entourage-name">Ms. Rosemarie Dianne Japlos</p>
+                <p class="entourage-name">Ms. Vanessa Chan</p>
                 
                 <p class="entourage-role">Bridesmaids</p>
-                <p class="entourage-name">Maria Edsa Navaja-Padin</p>
-                <p class="entourage-name">Reina Joy Rosal-Padin</p>
-                <p class="entourage-name">Maria Elizabeth Tabunan</p>
-                <p class="entourage-name">Grace Padin</p>
-                <p class="entourage-name">Erika</p>
-                <p class="entourage-name">Joyce Abadiez</p>
-                <p class="entourage-name">Gloribelle Potente</p>
-                <p class="entourage-name">Jessa Soberano</p>
+                <p class="entourage-name">Mrs. Maria Edsa Navaja-Padin</p>
+                <p class="entourage-name">Mrs. Reina Joy Rosal-Padin</p>
+                <p class="entourage-name">Ms. Maria Elizabeth Tabunan</p>
+                <p class="entourage-name">Ms. Grace Padin</p>
+                <p class="entourage-name">Ms. Erika</p>
+                <p class="entourage-name">Ms. Joyce Abadiez</p>
+                <p class="entourage-name">Ms. Gloribelle Potente</p>
+                <p class="entourage-name">Ms. Jessa Soberano</p>
                 
 
 
@@ -580,7 +636,7 @@
                 <p class="entourage-role">Flower Girls</p>
                 <p class="entourage-name">Mary Jovelle Uayan</p>
                 <p class="entourage-name">Elyssa Goh Xin Ni</p>
-                <p class="entourage-name">IAh Wainne</p>
+                <p class="entourage-name">Iah Wainne</p>
                 <p class="entourage-name">Venisce Soberano</p>
             </div>
 
@@ -589,13 +645,13 @@
                 <h3>Groomsmen Party</h3>
                 
                 <p class="entourage-role">Groomsmen</p>
-                <p class="entourage-name">William Padin</p>
-                <p class="entourage-name">Ariel Padin</p>
-                <p class="entourage-name">John Lester Casinillo</p>
-                <p class="entourage-name">Paul Padin</p>
-                <p class="entourage-name">Steven Tabunan</p>
-                <p class="entourage-name">Jonathan Colete</p>
-                <p class="entourage-name">Beyance Carlix Navaja</p>
+                <p class="entourage-name">Mr. William Padin</p>
+                <p class="entourage-name">Mr. Ariel Padin</p>
+                <p class="entourage-name">Mr. Lester Casinillo</p>
+                <p class="entourage-name">Mr. Paul Padin</p>
+                <p class="entourage-name">Mr. Steven Tabunan</p>
+                <p class="entourage-name">Mr. Jonathan Colete</p>
+                <p class="entourage-name">Mr. Beyance Carlix Navaja</p>
 
                 
                 <p class="entourage-role">Bible Bearer</p>
@@ -653,20 +709,16 @@
             
             <div class="palette-container">
                 <div class="color-swatch">
-                    <div class="color-circle color-silver"></div>
-                    <span class="color-name">Silver</span>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-circle color-gray"></div>
-                    <span class="color-name">Gray</span>
+                    <div class="color-circle color-navy-blue"></div>
+                    <span class="color-name">Navy Blue</span>
                 </div>
                 <div class="color-swatch">
                     <div class="color-circle color-dusty-blue"></div>
                     <span class="color-name">Dusty Blue</span>
                 </div>
                 <div class="color-swatch">
-                    <div class="color-circle color-sky-blue"></div>
-                    <span class="color-name">Sky Blue</span>
+                    <div class="color-circle color-silver"></div>
+                    <span class="color-name">Silver</span>
                 </div>
             </div>
         </div>
