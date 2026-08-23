@@ -79,7 +79,7 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center/cover;
+                        url('pic5.jpg') no-repeat center center/cover;
             padding: 20px;
         }
 
@@ -261,11 +261,17 @@
 
         @media (max-width: 500px) {
             .secondary-sponsors-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px 15px;
             }
-            .secondary-sponsors-grid p:nth-child(odd),
+            .secondary-sponsors-grid p:nth-child(odd) {
+                text-align: right;
+            }
             .secondary-sponsors-grid p:nth-child(even) {
-                text-align: center;
+                text-align: left;
+            }
+            .entourage-name {
+                font-size: 0.8rem;
             }
         }
 
@@ -426,7 +432,7 @@
         }
         
         .entourage-name {
-            font-size: 1.05rem;
+            font-size: 0.85rem;
             color: var(--navy-color);
             font-weight: 400;
         }
@@ -646,23 +652,18 @@
                 <h3>Entourage</h3>
                 <p class="entourage-role"> 
                     WITH THE BLESSING OF OUR PARENTS
-
                 </p>
                 <p class="entourage-role">Parents of the Groom</p>
-                <h2></h2>
                 <div class="secondary-sponsors-grid">
                     <p class="entourage-name">Mr. Tong Peng Chan✝️</p>
                     <p class="entourage-name">Mrs. Choy Ngor✝️</p>
                 </div>
-                <h2></h2>
 
                 <p class="entourage-role">Parents of the Bride</p>
-                <h2></h2>
                 <div class="secondary-sponsors-grid">
                     <p class="entourage-name">Mr. Edilberto S. Padin Jr. ✝️</p>
                     <p class="entourage-name">Mrs. Lourdes B. Padin ✝️</p>
                 </div>
-                <h2></h2>
 
                 <p class="entourage-role">Principal Sponsor</p>
                 <p class="entourage-role">
@@ -670,7 +671,6 @@
                     to stand as witnesses to our vows
                     </i>
                 </p>
-                <h2></h2>
                 <div class="secondary-sponsors-grid">
                     <p class="entourage-name">Mr. Lorenzo Clavejo</p>
                     <p class="entourage-name">Mrs. Margaret Rose Clavejo </p>
@@ -690,9 +690,8 @@
                     <p class="entourage-name">Mr. Liew Chong Chew</p>
                     <p class="entourage-name">Mrs. Geok Hui TYNG</p>
                 </div>
-                <h2></h2>
+
                 <p class="entourage-role">Secondary Sponsor</p>
-                <h2></h2>
                 <div class="secondary-sponsors-grid">
                     <p class="entourage-name">Mr. Jay Beleña</p>
                     <p class="entourage-name">Mrs. Erika Crysta A. Beleña </p>
@@ -843,8 +842,8 @@
                     <img src="qr_code.jpg" alt="Registry QR Code">
                 </div>
                 <div class="registry-info">
-                    <p style="font-size: 0.95rem; margin-bottom: 15px; line-height: 1.5; color: var(--navy-color); font-weight: 400;">IN LIEU OF GIFTS<br>
-AS THIS DAY REVOLVES AROUND LOVE'SPAN EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T REPLACE. IF YOU WERE THINKING OF GIVING A GIFT, AN ENVELOPE GIFT FOR OUR HOME WOULD MAKE OUR DAY.</p>
+                    <p style="font-size: 0.95rem; margin-bottom: 15px; line-height: 1.5; color: var(--navy-color); font-weight: 400;">In Lieu of Gifts<br>
+As this day revolves around love's embrace, your presence is a gift we can't replace. If you were thinking of giving a gift, an envelope gift for our home would make our day.</p>
                     <p style="font-size: 0.85rem; color: #7f8c8d; font-style: italic;">Hover or scan using your phone's camera application to launch link directly.</p>
                 </div>
             </div>
@@ -879,7 +878,7 @@ AS THIS DAY REVOLVES AROUND LOVE'SPAN EMBRACE, YOUR PRESENCE IS A GIFT WE CAN'T 
         <div class="floral-divider">
             <svg viewBox="0 0 24 24"><path d="M12,2C12,2 9,7 9,10C9,12.21 10.79,14 13,14C15.21,14 17,12.21 17,10C17,7 12,2 12,2M12,16C9.79,16 8,17.79 8,20C8,20.55 8.45,21 9,21C9.55,21 10,20.55 10,20C10,18.9 10.9,18 12,18C13.1,18 14,18.9 14,20C14,20.55 14.45,21 15,21C15.55,21 16,20.55 16,20C16,17.79 14.21,16 12,16Z"/></svg>
         </div>
-        <p>Kindly respond by September 15, 2026 so we can finalize our guest count with the venue.</p>
+        <p>Kindly respond before September 15, 2026 so we can finalize our guest count with the venue.</p>
         <a href="https://forms.gle/RXjMMfhoG1sL5dRD7" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
