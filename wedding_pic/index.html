@@ -185,6 +185,17 @@
             transform: scale(1.05);
         }
 
+        /* Venue Image Styling */
+        .venue-img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto 5px auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(13, 59, 102, 0.08);
+        }
+
         /* Dress Code Attire Preview Row Layout */
         .attire-preview-row {
             display: grid;
@@ -271,7 +282,7 @@
                 text-align: left;
             }
             .entourage-name {
-                font-size: 0.7rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -432,7 +443,7 @@
         }
         
         .entourage-name {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--navy-color);
             font-weight: 400;
         }
@@ -576,7 +587,7 @@
                 <p class="time">3:30 PM</p>
                 <p><strong>Sacred Heart Parish</strong></p>
                 <p style="color: #5a738e;">D. Jakosalem St, Cebu City, Philippines</p>
-                <br>
+                <img src="Sacred.jpg" alt="Sacred Heart Parish Illustration" class="venue-img">
                 <a href="https://maps.google.com/?q=Sacred+Heart+Parish+Cebu+City" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">View Map</a>
             </div>
 
@@ -585,7 +596,7 @@
                 <p class="time">6:00 PM</p>
                 <p><strong>Seda Hotel</strong></p>
                 <p style="color: #5a738e;">Cardinal Rosales Ave, Ayala Business Park, Cebu City</p>
-                <br>
+                <img src="Seda.jpg" alt="Seda Hotel Illustration" class="venue-img">
                 <a href="https://maps.google.com/?q=Seda+Ayala+Center+Cebu" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">View Map</a>
             </div>
         </div>
@@ -682,7 +693,7 @@
                     <p class="entourage-name">Mrs. Consuelo Abadiez</p>
 
                     <p class="entourage-name">Mr. Renato Clavejo</p>
-                    <p class="entourage-name">Mrs. Teresita Chua</p>
+                    <p class="entourage-name">Mrs. Teresita Chu</p>
 
                     <p class="entourage-name">Mr. Reynaldo Padin</p>
                     <p class="entourage-name">Mrs. Joselun Tabunan</p>
@@ -696,7 +707,7 @@
                     <p class="entourage-name">Mr. Jay Beleña</p>
                     <p class="entourage-name">Mrs. Erika Crysta A. Beleña </p>
                     <p class="entourage-name">Mr. William A. Padin</p>
-                    <p class="entourage-name">Mrs. Edz N. Padin</p>                    
+                    <p class="entourage-name">Mrs. Maria Edsa N. Padin</p>                    
                     <p class="entourage-name">Mr. Raymond C. Abadiez</p>
                     <p class="entourage-name">Mrs. Aura P. Igaña</p>
                 </div>
@@ -705,49 +716,45 @@
 
         <div class="details-grid">
             <!-- Left Side: Bridal Party -->
+           <div class="details">
             <div class="card">
-                <h3>Bridal Party</h3>
+                <h3 style="font-size: 1.1rem;">Best Man & Maid of Honor</h3>
+                <div class="secondary-sponsors-grid">
+                    <p class="entourage-name">Mr. Raymond Sam</p>
+                    <p class="entourage-name">Ms. Rosemarie Dianne Japlos</p>
 
-                <p class="entourage-role">Maid of Honor</p>
-                <p class="entourage-name">Ms. Rosemarie Dianne Japlos</p>
-                <p class="entourage-name">Ms. Vanessa Chan</p>
-                
-                <p class="entourage-role">Bridesmaids</p>
-                <p class="entourage-name">Mrs. Reina Joy Rosal-Padin</p>
-                <p class="entourage-name">Ms. Maria Elizabeth Tabunan</p>
-                <p class="entourage-name">Ms. Grace Padin</p>
-                <p class="entourage-name">Ms. Erika</p>
-                <p class="entourage-name">Ms. Joyce Abadiez</p>
-                <p class="entourage-name">Ms. Gloribelle Potente</p>
-                <p class="entourage-name">Ms. Jessa Soberano</p>
-                
-                <p class="entourage-role">Flower Girls</p>
-                <p class="entourage-name">Gabrielle Nina I. Suarez</p>
-                <p class="entourage-name">Mary Jovelle Uayan</p>
-                <p class="entourage-name">Venisce Soberano</p>
+                    <p class="entourage-name">Mr. Jowell Chan</p>
+                    <p class="entourage-name">Ms. Vanessa Chan</p>
+
+                 
+                </div>
+                <br>
+                <h3 style="font-size: 1.1rem;">Groomsmen & Bridesmaid</h3>
+               
+                <div class="secondary-sponsors-grid">
+                    <p class="entourage-name">Mr. Ariel Padin</p>
+                    <p class="entourage-name">Mrs. Reina Joy Padin</p>
+
+                    <p class="entourage-name">Mr. Lester Casinillo</p>
+                    <p class="entourage-name">Ms. Maria Elizabeth Tabunan</p>
+
+                    <p class="entourage-name">Mr. Paul Padin</p>  
+                    <p class="entourage-name">Ms. Grace Padin</p>
+
+                    <p class="entourage-name">Mr. Steven Tabunan</p>
+                    <p class="entourage-name">Ms. Joyce Abadiez</p>
+
+                    <p class="entourage-name">Mr. Jonathan Colete</p>
+                    <p class="entourage-name">Ms. Gloribelle Potente</p>
+
+                    <p class="entourage-name">Mr. Beyance Carlix Navaja</p>
+                    <p class="entourage-name">Ms. Jessa Soberano</p>
+                </div>
+
+               
             </div>
+        </div>
 
-            <!-- Right Side: Groomsmen Party -->
-            <div class="card">
-                <h3>Groomsmen Party</h3>
-                
-                <p class="entourage-role">Groomsmen</p>
-                <p class="entourage-name">Mr. Ariel Padin</p>
-                <p class="entourage-name">Mr. Lester Casinillo</p>
-                <p class="entourage-name">Mr. Paul Padin</p>
-                <p class="entourage-name">Mr. Steven Tabunan</p>
-                <p class="entourage-name">Mr. Jonathan Colete</p>
-                <p class="entourage-name">Mr. Beyance Carlix Navaja</p>
-
-                <p class="entourage-role">Ring Bearer</p>
-                <p class="entourage-name">Eliam Lixed Padin</p>
-
-                <p class="entourage-role">Arrhea Bearer</p>
-                <p class="entourage-name">Glenn Angelo Manalili</p>
-
-                <p class="entourage-role">Ring Bearer</p>
-                <p class="entourage-name">N/A</p>
-            </div>
         </div>
     </section>
 
@@ -878,7 +885,7 @@ As this day revolves around love's embrace, your presence is a gift we can't rep
         <div class="floral-divider">
             <svg viewBox="0 0 24 24"><path d="M12,2C12,2 9,7 9,10C9,12.21 10.79,14 13,14C15.21,14 17,12.21 17,10C17,7 12,2 12,2M12,16C9.79,16 8,17.79 8,20C8,20.55 8.45,21 9,21C9.55,21 10,20.55 10,20C10,18.9 10.9,18 12,18C13.1,18 14,18.9 14,20C14,20.55 14.45,21 15,21C15.55,21 16,20.55 16,20C16,17.79 14.21,16 12,16Z"/></svg>
         </div>
-        <p>Kindly respond before September 15, 2026 so we can finalize our guest count with the venue.</p>
+        <p>Kindly respond by September 15, 2026 so we can finalize our guest count with the venue.</p>
         <a href="https://forms.gle/RXjMMfhoG1sL5dRD7" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
