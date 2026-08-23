@@ -196,6 +196,15 @@
             box-shadow: 0 4px 10px rgba(13, 59, 102, 0.08);
         }
 
+        /* Timeline Image Styling */
+        .timeline-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
         /* Dress Code Attire Preview Row Layout */
         .attire-preview-row {
             display: grid;
@@ -611,40 +620,8 @@
         <div class="floral-divider">
             <svg viewBox="0 0 24 24"><path d="M12,2C12,2 9,7 9,10C9,12.21 10.79,14 13,14C15.21,14 17,12.21 17,10C17,7 12,2 12,2M12,16C9.79,16 8,17.79 8,20C8,20.55 8.45,21 9,21C9.55,21 10,20.55 10,20C10,18.9 10.9,18 12,18C13.1,18 14,18.9 14,20C14,20.55 14.45,21 15,21C15.55,21 16,20.55 16,20C16,17.79 14.21,16 12,16Z"/></svg>
         </div>
-        <div class="card" style="max-width: 550px; margin: 0 auto; text-align: left; padding: 40px;">
-            <div style="margin-bottom: 15px;">
-                <span class="time" style="display: block; font-size: 1.1rem;">3:30 PM</span>
-                <strong style="color: var(--navy-color); text-transform: uppercase; letter-spacing: 1px;">Wedding Ceremony</strong>
-                <p style="color: #5a738e; font-size: 0.95rem; margin-top: 3px;">Sacred Heart Parish</p>
-            </div>
-           
-
-            <div style="margin-bottom: 15px;">
-                <span class="time" style="display: block; font-size: 1.1rem;">4:30 PM</span>
-                <strong style="color: var(--navy-color); text-transform: uppercase; letter-spacing: 1px;">Recessional</strong>
-                
-            </div>
-
-
-            <div style="margin-bottom: 15px;">
-                <span class="time" style="display: block; font-size: 1.1rem;">4:45 PM</span>
-                <strong style="color: var(--navy-color); text-transform: uppercase; letter-spacing: 1px;">Cocktails & Socials</strong>
-                <p style="color: #5a738e; font-size: 0.95rem; margin-top: 3px;">Seda Hotel Foyer</p>
-            </div>
-          
-            <div>
-                <span class="time" style="display: block; font-size: 1.1rem;">6:00 PM</span>
-                <strong style="color: var(--navy-color); text-transform: uppercase; letter-spacing: 1px;">Dinner & Celebration</strong>
-                <p style="color: #5a738e; font-size: 0.95rem; margin-top: 3px;">Seda Hotel Ballroom</p>
-            </div>
-
-              <div>
-                <span class="time" style="display: block; font-size: 1.1rem;">9:30 PM</span>
-                <strong style="color: var(--navy-color); text-transform: uppercase; letter-spacing: 1px;">After Party</strong>
-                <p style="color: #5a738e; font-size: 0.95rem; margin-top: 3px;">Seda Hotel Ballroom</p>
-            </div>
-
-
+        <div class="card" style="max-width: 600px; margin: 0 auto; padding: 20px;">
+            <img src="timeline.png" alt="Wedding Timeline" class="timeline-img">
         </div>
     </section>
 
@@ -713,12 +690,12 @@
                 </div>
             </div>
         </div>
+        <br>
 
-       
-            <!-- Left Side: Bridal Party -->
            <div class="details">
             <div class="card">
                 <h3 style="font-size: 1.1rem;">Best Man & Maid of Honor</h3>
+               
                 <div class="secondary-sponsors-grid">
                     <p class="entourage-name">Mr. Raymond Sam</p>
                     <p class="entourage-name">Ms. Rosemarie Dianne Japlos</p>
@@ -728,7 +705,13 @@
 
                  
                 </div>
-                <br>
+
+               
+            </div>
+        </div>
+        <br>
+           <div class="details">
+            <div class="card">
                 <h3 style="font-size: 1.1rem;">Groomsmen & Bridesmaid</h3>
                
                 <div class="secondary-sponsors-grid">
@@ -754,6 +737,7 @@
                
             </div>
         </div>
+
 
     </section>
 
@@ -847,7 +831,7 @@
                 <div class="qr-code-wrapper">
                     <img src="qr_code.jpg" alt="Registry QR Code">
                 </div>
-                <div class="registry-info">
+                <div class="registry-info" style="text-align: center">
                     <p style="font-size: 0.95rem; margin-bottom: 15px; line-height: 1.5; color: var(--navy-color); font-weight: 400;">In Lieu of Gifts<br>
 As this day revolves around love's embrace, your presence is a gift we can't replace. If you were thinking of giving a gift, an envelope gift for our home would make our day.</p>
                     <p style="font-size: 0.85rem; color: #7f8c8d; font-style: italic;">Hover or scan using your phone's camera application to launch link directly.</p>
@@ -885,7 +869,7 @@ As this day revolves around love's embrace, your presence is a gift we can't rep
             <svg viewBox="0 0 24 24"><path d="M12,2C12,2 9,7 9,10C9,12.21 10.79,14 13,14C15.21,14 17,12.21 17,10C17,7 12,2 12,2M12,16C9.79,16 8,17.79 8,20C8,20.55 8.45,21 9,21C9.55,21 10,20.55 10,20C10,18.9 10.9,18 12,18C13.1,18 14,18.9 14,20C14,20.55 14.45,21 15,21C15.55,21 16,20.55 16,20C16,17.79 14.21,16 12,16Z"/></svg>
         </div>
         <p>Kindly respond by September 15, 2026 so we can finalize our guest count with the venue.</p>
-        <a href="https://forms.gle/RXjMMfhoG1sL5dRD7" target="_blank" class="btn">Confirm Attendance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezg3TPNFx8kJmw9wz-jBD2pLW9DO0gP3MQFxFrIIGXKo9kcQ/viewform?usp=send_form&pli=1&authuser=0" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
     <footer>
